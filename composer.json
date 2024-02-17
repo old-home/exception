@@ -1,0 +1,47 @@
+{
+    "name": "graywings/exception",
+    "description": "Exception set within Graywings project",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Taira Terashima",
+            "email": "taira.terashima@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "required-dev": {
+        "phpunit/phpunit": "^10.3",
+        "squizlabs/php_codesniffer": "^3.8",
+        "phpstan/phpstan": "^1.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "Graywings\\Exception\\": "src/"
+        },
+        "files": ["src/functions.php"]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Graywings\\Exception\\Tests\\Unit\\": "tests/Unit"
+        }
+    },
+    "scripts": {
+        "build": [
+            "@test",
+            "@lint"
+        ],
+        "test": [
+            "@test:units"
+        ],
+        "test:units": "phpunit --testsuite units --coverage-html=coverage",
+        "lint": [
+            "@lint:fix",
+            "@lint:phpcs",
+            "@lint:phpstan"
+        ],
+        "lint:fix": "phpcbf src/",
+        "lint:phpcs": "phpcs src/",
+        "lint:phpstan": "phpstan"
+    }
+}
