@@ -33,9 +33,18 @@ use PHPUnit\Framework\TestCase;
 #[CoversFunction('Graywings\Exception\initErrorHandler')]
 class FunctionsTest extends TestCase
 {
-    public function testInitErrorHandler()
+    public function setUp(): void
     {
         initErrorHandler();
+    }
+
+    public function tearDown(): void
+    {
+        restore_error_handler();
+    }
+
+    public function testInitErrorHandler(): void
+    {
         $this->expectException(ErrorException::class);
         $array = [];
         $array[0];
